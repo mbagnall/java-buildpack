@@ -36,7 +36,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        download_zip false
+        #download_zip false
       end
 
       def process_config
