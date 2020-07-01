@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'java_buildpack/component/base_component'
 require 'java_buildpack/component/versioned_dependency_component'
 require 'java_buildpack/framework'
 
