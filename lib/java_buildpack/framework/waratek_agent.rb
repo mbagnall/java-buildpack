@@ -35,9 +35,9 @@ module JavaBuildpack
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
-      def compile
+      #def compile
         #download_zip false
-      end
+      #end
 
       def process_config
         @uri = @configuration['uri']
