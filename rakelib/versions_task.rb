@@ -91,6 +91,7 @@ module Package
       'spring_boot_cli' => 'Spring Boot CLI',
       'takipi_agent' => 'Takipi Agent',
       'tomcat' => 'Tomcat',
+      'waratek_secure' => 'Waratek Secure'
       'your_kit_profiler' => 'YourKit Profiler'
     }.freeze
 
