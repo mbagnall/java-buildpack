@@ -35,9 +35,9 @@ module JavaBuildpack
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
-      #def compile
-        #download_zip false
-      #end
+      def compile
+        download_zip false
+      end
 
       def process_config
         @uri = @configuration['uri']
@@ -88,12 +88,11 @@ module JavaBuildpack
 
     def waratek_props_file
       @droplet.sandbox + '.waratek/conf_1/waratek.properties'
+    end
     
     def agent_jar
       @droplet.sandbox + 'agent/waratek.jar'
       # @droplet.sandbox + '.waratek/agent/waratek.jar'
-    end
-
     end
 
   end
