@@ -37,24 +37,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        #download_zip false
-        # Download the Agent
-        waratek_home = File.join(@app_dir, WARATEK_DIR)
-        FileUtils.mkdir_p(waratek_home)
-        download_agent(@version, @uri, waratek_home)
-      end
-
-      def process_config
-        @uri = @configuration['uri']
-        @version = @configuration['version']
-
-        # The Agent doesn't yet specify the URI or the Repository Root. At present, it's
-        # the application that defines the location of the Agent zip file to download
-        if @uri.nil?
-          @uri = @environment['waratek_treasure']
-        end
-
-        @version.nil? ? nil : version_identifier
+        download_zip false
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
@@ -91,21 +74,26 @@ module JavaBuildpack
     #  @environment['waratek_properties']
     #end
 
+    def process_config
+      @uri = @configuration['uri']
+      @version = @configuration['version']
+
+      # The Agent doesn't yet specify the URI or the Repository Root. At present, it's
+      # the application that defines the location of the Agent zip file to download
+      if @uri.nil?
+        @uri = @environment['waratek_treasure']
+      end
+
+      @version.nil? ? nil : '19.0.0'
+    end
+
     def waratek_props_file
       @droplet.sandbox + '.waratek/conf_1/waratek.properties'
     end
 
     def agent_jar
-      @droplet.sandbox + 'agent/waratek.jar'
-      # @droplet.sandbox + '.waratek/agent/waratek.jar'
-    end
-
-    # Download the agent library from the uri as specified in the waratek configuration.
-    def download_agent(version_desc, uri_source, target_dir)
-      download_start_time = Time.now
-      download_zip(version_desc, uri_source, 'Waratek Agent', target_dir)
-    rescue => e
-      raise "Unable to download the Waratek Agent zip. Ensure that the agent zip at #{uri_source} is available and accessible. #{e.message}"
+      #@droplet.sandbox + 'agent/waratek.jar'
+      @droplet.sandbox + '.waratek/agent/waratek.jar'
     end
 
   end

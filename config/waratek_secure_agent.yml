@@ -24,3 +24,4 @@
 ---
 enabled: true
 version: 19.+
+repository_root: https://waratek-public-releases.s3-eu-west-1.amazonaws.com/es/es-1094
